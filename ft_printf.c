@@ -54,13 +54,14 @@ int	ft_printf(const char *formats, ...)
 		{
 			formats++;
 			if (*formats == '\0')
-				return (-1);
+				return (va_end(args), (-1));
 			count += format_checker(formats, args);
 		}
 		else
 			count += ft_putchar(*formats);
 		formats++;
 	}
+	va_end(args);
 	if (catch_err(0) == -1)
 		return (-1);
 	return (count);
